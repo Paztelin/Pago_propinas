@@ -1,0 +1,307 @@
+header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #595757;
+    padding-bottom: 30px;
+    margin: 20px 50px 0;
+}
+
+/*icono atras*/
+.atrass {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.atrass p {
+    margin: 0;
+    font-size: 18px;
+    color: #e65c4f;
+    font-weight: bold;
+}
+
+.titulo {
+    font-size: 45px;
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1;
+    margin: 20px;
+    text-align: left;
+}
+
+/*efectivo en caja*/
+.caja-efectivo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.etiqueta-efectivo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e65c4f;
+    margin: 5px;
+}
+
+.input-efectivo {
+    background-color: #FFD6D0;
+    border: 3px solid #FFD6D0;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 40px;
+    width: 38%;
+    height: 60px;
+    box-sizing: border-box;
+    color: #e65c4f;
+    font-weight: bold;
+    text-align: center;
+    cursor: auto;
+}
+
+/************CONTENIDO CENTRAL************/
+main {
+    margin: 20px 50px 0;
+}
+
+.resumen-pago,
+.metodo-pago {
+    width: 33%;
+}
+
+/*resumen de propinas*/
+.resumen-pago {
+    box-sizing: border-box;
+}
+
+.resumen-pago label {
+    color: #e65c4f;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    width: 35%;
+    justify-content: left;
+    margin-left: 24%;
+}
+
+.total-edit {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+
+}
+
+.input-propina {
+    margin-top: 8px;
+    background-color: #FFD6D0;
+    border: 10px solid #FFD6D0;
+    border-radius: 5px;
+    font-size: 40px;
+    width: 45%;
+    height: 60px;
+    box-sizing: border-box;
+    color: #e65c4f;
+    font-weight: bold;
+    cursor: auto;
+    text-align: left;
+}
+
+.edit:hover {
+    transition: transform 0.3s;
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+/*division de propinas*/
+.resumen-pago h3 {
+    font-size: 28px;
+    margin-top: 20px;
+    color: #333;
+}
+
+.input-num-person {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 5px;
+    color: #333;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    cursor: auto;
+}
+
+.resumen-pago p {
+    color: #e65c4f;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.dividir-prop {
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}
+
+/*metodo de pago*/
+.texto-elige-metodo p{
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+    margin: 20px 0 1px;
+    color: #333;
+    align-items: center;
+}
+
+.div_metodos {
+    margin-left: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 145px);
+    grid-template-rows: repeat(2, 85px);
+    gap: 1rem;
+}
+
+.pago { /*cajitas metodos de pago*/
+    box-sizing: content-box;
+    border-radius: 15px;
+    border: 2px solid lightgray;
+    padding: 10px;
+    width: 130px;
+    height: 70px;
+    text-align: center;
+    box-shadow: 2px 2px 5px lightgray;
+    background-color: #FFFFFF;
+    font-size: 15px;
+
+    &:hover {
+        background-color: #e65c4f;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s;
+        transform: scale(1.1);
+        box-shadow: 2px 2px 5px lightgray;
+    }
+}
+
+.pago:hover .metodos p{ /*cambio de color del texto de los metodos de pago*/
+    color: white;
+}
+
+/***************C A L C U L A D O R A***************/
+{
+    display: flex;
+}
+#calculator {
+    margin-left: 30px;
+    margin-top: 30px;
+    padding: 35px;
+    border-radius: 35px;
+    background-color: #e3e1e1;
+    float: left;
+    box-sizing: border-box;
+    height: 480px;
+    width: 350px;
+}
+
+#calculator:hover {
+    border: 2px solid #f89b8f;
+    background-color: #ffe7e3;
+}
+
+.display-row {
+    width: 86%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    gap: 20px;
+    padding: 10px;
+}
+
+
+
+#display::placeholder {
+    border: none;
+    outline: 0;
+}
+
+#display {
+    border: none;
+    background: transparent;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+    outline: none;
+    text-align: right;
+    
+}
+
+.btn-borrar {
+    width: 25px;
+    cursor: pointer;
+}
+
+.btn-borrar:hover {
+    transition: transform 0.3s;
+    transform: scale(1.3);
+}
+
+
+/*botones calculadora*/
+
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    justify-items: center;
+
+}
+
+
+#buttons>button {
+    width: 70%;
+    height: 80%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #333;
+    border: 2px solid #d2c3c3;
+    cursor: pointer;
+    font-size: 35px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#buttons>button:hover {
+    transition: transform 0.3s;
+    transform: scale(1.19);
+}
+
+
+.img-button {
+    width: 68%;
+    height: 76%;
+    padding: 10px;
+    border: 2px solid #d2c3c3;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.img-button img {
+    width: 100%;
+    max-height: 50px;
+}
+
+.img-button:hover {
+    background-color: #e65c4f;
+    transition: transform 0.3s;
+    transform: scale(1.1);
+    border: none;
+}

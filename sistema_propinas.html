@@ -5,31 +5,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema pago de propinas</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
+    <!---->
     <header>
+        <div class="atrass">
+            <img src="img/atras.png" alt="icono atras" style="width: 20px;">
+            <p>Atrás</p>
+        </div>
 
+        <h1 class="titulo">Pago de propinas</h1>
+
+        <div class="caja-efectivo">
+            <span class="etiqueta-efectivo">Efectivo en caja</span>
+            <input class="input-efectivo" type="text" name="total-caja" readonly>
+        </div>
     </header>
 
     <main>
-        <!--resumen de propinas-->
-        <section>
+            <!--resumen de propinas-->
+            <section class="resumen-pago">
+                <label for="propinas-total">Total de propinas</label>
+                <div class="total-edit">
+                    <input class="input-propina" type="text" id="propinas-total" readonly>
+                    <img class="edit" src="img/editar.png" alt="icono editar" width="30">
+                </div>
 
-        </section>
+                <h3>¿Entre cuántos quieres dividir las propinas?</h3>
+                <div class="dividir-prop">
+                    <input class="input-num-person" type="text" placeholder="#" readonly>
+                    <p>$0.00 x persona</p>
+                </div>
 
-        <!--metodo de pago-->
-        <section>
+            <!--metodo de pago-->
+                <div class="texto-elige-metodo">
+                    <img src="img/cartera.png" alt="icono metodo" width="35">
+                    <p id="elige-metodo">Elige el método de pago</p>
+                </div>
+                <div class="div_metodos">
+                    <div class="pago">
+                        <img src="img/dineroEfectivo.png" alt="icono efectivo" style="width: 35px;">
+                        <p class="metodos">Efectivo</p>
+                    </div>
 
-        </section>
+                    <div class="pago">
+                        <img src="img/tarjeta.png" alt="icono tarjeta" style="width: 35px;">
+                        <p class="metodos">Tarjeta de crédito</p>
+                    </div>
 
-        <!--calculator-->
-        <section>
+                    <div class="pago">
+                        <img src="img/transferir.png" alt="icono celular pago" style="width: 35px;">
+                        <p class="metodos">Transferencia</p>
+                    </div>
+                </div>
+            </section>
 
-        </section>
+            <!--calculator-->
+            <section>
+                <div id="calculator">
+                    <div class="calculadora">
+
+                        <div class="display-row">
+                            <button data-operand-1 type="text" id="display" readonly></button>
+                            <img data-delete src="img/borrar.png" alt="borrar" class="btn-borrar">
+                        </div>
+
+                        <div id="buttons">
+                            <button data-number>1</button>
+                            <button data-number>2</button>
+                            <button data-number>3</button>
+
+                            <button data-number>4</button>
+                            <button data-number>5</button>
+                            <button data-number>6</button>
+
+                            <button data-number>7</button>
+                            <button data-number>8</button>
+                            <button data-number>9</button>
+
+                            <button data-number>0</button>
+                            <button data-number>.</button>
+
+                            <button data-ok class="img-button">
+                                <img class="verificar" src="img/comprobado.png" alt="boton-ok">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </main>
 
+    <!--Detalles de pagos hechos-->
     <aside>
 
     </aside>
@@ -39,4 +107,5 @@
     </footer>
 
 </body>
+
 </html>
