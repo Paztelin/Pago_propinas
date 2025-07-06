@@ -66,10 +66,10 @@ setTimeout(() => {
         }
 
         confirm() {
-            const inputCaja = document.querySelector(".cajaDinero"); //efectivo en caja
+            const inputCaja = document.querySelector(".input-efectivo"); //efectivo en caja
             const inputPropina = document.querySelector(".input-propina"); //total propinas
-            const divInput = document.querySelector(".div-pro"); //caja numero para dividir
-            const divText = document.querySelector(".divir p"); //monto por persona
+            const divInput = document.querySelector(".input-num-person"); //caja numero para dividir
+            const divText = document.querySelector(".dividir-prop p"); //monto por persona
 
             if (this.currentValue === '') return;
 
@@ -83,8 +83,8 @@ setTimeout(() => {
                 }
 
                 const formattedEfectivo = this.formatNumber(this.currentValue); //aplica formato decimal
-                if (input-efectivo) {
-                    input-efectivo.value = `$${formattedEfectivo}`;
+                if (inputCaja) {
+                    inputCaja.value = `$${formattedEfectivo}`;
                 }
                 this.ingresandoEfectivo = false;
                 this.clear();
@@ -101,7 +101,7 @@ setTimeout(() => {
                 this.totalPropina = numericValue;
 
                 //Actualiza el campo "restante por pagar" del footer
-                const restanteElemento = document.querySelector(".total.restante");
+                const restanteElemento = document.querySelector(".total-restante");
                 if (restanteElemento) {
                     restanteElemento.textContent = `$${formatted}`;
                 }
@@ -142,7 +142,7 @@ setTimeout(() => {
 
         editInput() { //icono editar total de propinas
             const inputPropina = document.querySelector(".input-propina"); //total propinas
-            const divInput = document.querySelector(".div-pro"); //caja numero para dividir
+            const divInput = document.querySelector(".input-num-person"); //caja numero para dividir
 
             //limpia valores
             if (inputPropina) inputPropina.value = '';
@@ -151,7 +151,7 @@ setTimeout(() => {
             this.clear();
 
             const numPersonas = parseInt(divInput.value); //actualiza valores
-            const divText = document.querySelector(".divir p");
+            const divText = document.querySelector(".dividir-prop p");
             if (isNaN(numPersonas) || numPersonas <= 0) {
                 divText.textContent = '$0.00 x persona';
             }

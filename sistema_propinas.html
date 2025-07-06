@@ -14,7 +14,11 @@
     <div class="container-grid">
         <header>
             <div class="atrass">
-                <img src="img/atras.png" alt="icono atras" style="width: 20px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-chevron-left-icon lucide-chevron-left">
+                    <path d="m15 18-6-6 6-6" />
+                </svg>
                 <p>Atrás</p>
             </div>
 
@@ -32,7 +36,13 @@
                 <label for="propinas-total">Total de propinas</label>
                 <div class="total-edit">
                     <input class="input-propina" type="text" id="propinas-total" readonly>
-                    <img class="edit" src="img/editar.png" alt="icono editar" width="30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                        stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-pencil-icon lucide-pencil">
+                        <path
+                            d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                        <path d="m15 5 4 4" />
+                    </svg>
                 </div>
 
                 <h3>¿Entre cuántos quieres dividir las propinas?</h3>
@@ -45,23 +55,52 @@
             <!--metodo de pago-->
             <section class="metodo-pago">
                 <div class="texto-elige-metodo">
-                    <img src="img/cartera.png" alt="icono metodo" width="35">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-wallet-icon lucide-wallet">
+                        <path
+                            d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+                        <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+                    </svg>
                     <p>Elige el método de pago</p>
                 </div>
+
                 <div class="div_metodos">
                     <div class="pago">
-                        <img src="img/dineroEfectivo.png" alt="icono efectivo" style="width: 35px;">
+                        <svg class="icono-svg" xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                            viewBox="0 0 48 48" fill="white">
+                            <!-- Billete trasero -->
+                            <rect x="6" y="10" width="32" height="20" rx="2" fill="white" stroke="#333"
+                                stroke-width="2" />
+                            <circle cx="22" cy="20" r="4" fill="#333" />
+                            <path d="M10 14h.01M34 14h.01M10 26h.01M34 26h.01" stroke="#333" stroke-width="2" />
+
+                            <!-- Billete delantero -->
+                            <rect x="10" y="14" width="32" height="20" rx="2" fill="white" stroke="#333"
+                                stroke-width="2" />
+                            <circle cx="26" cy="24" r="4" fill="#333" />
+                            <path d="M14 18h.01M38 18h.01M14 30h.01M38 30h.01" stroke="black" stroke-width="2" />
+                        </svg>
+
                         <p class="metodos">Efectivo</p>
                     </div>
 
                     <div class="pago">
-                        <img src="img/tarjeta.png" alt="icono tarjeta" style="width: 35px;">
-                        <p class="metodos">Tarjeta de crédito</p>
+                        <svg class="icono-svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#333"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        <p class="metodos">BBVA 1234</p>
                     </div>
 
                     <div class="pago">
-                        <img src="img/transferir.png" alt="icono celular pago" style="width: 35px;">
-                        <p class="metodos">Transferencia</p>
+                        <svg class="icono-svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#333"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        <p class="metodos">Santander 1234</p>
                     </div>
                 </div>
             </section>
@@ -72,7 +111,14 @@
                     <div class="calculadora">
                         <div class="display-row">
                             <button data-operand-1 type="text" id="display" readonly></button>
-                            <img data-delete src="img/borrar.png" alt="borrar" class="btn-borrar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#212121" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-delete-icon lucide-delete">
+                                <path
+                                    d="M10 5a2 2 0 0 0-1.344.519l-6.328 5.74a1 1 0 0 0 0 1.481l6.328 5.741A2 2 0 0 0 10 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z" />
+                                <path d="m12 9 6 6" />
+                                <path d="m18 9-6 6" />
+                            </svg>
                         </div>
 
                         <div id="buttons">
@@ -91,9 +137,14 @@
                             <button data-number>0</button>
                             <button data-number>.</button>
 
-                            <button data-ok class="img-button">
-                                <img class="verificar" src="img/comprobado.png" alt="boton-ok">
-                            </button>
+                            <div data-ok class="img-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-circle-check-icon lucide-circle-check">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,4 +178,5 @@
     </div>
 </body>
 <script src="funcionalidad.js"></script>
+
 </html>
