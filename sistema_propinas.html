@@ -9,22 +9,22 @@
 </head>
 
 <body>
-    <!---->
-    <header>
-        <div class="atrass">
-            <img src="img/atras.png" alt="icono atras" style="width: 20px;">
-            <p>Atrás</p>
-        </div>
+    <div class="container-grid">
+        <header>
+            <div class="atrass">
+                <img src="img/atras.png" alt="icono atras" style="width: 20px;">
+                <p>Atrás</p>
+            </div>
 
-        <h1 class="titulo">Pago de propinas</h1>
+            <h1 class="titulo">Pago de propinas</h1>
 
-        <div class="caja-efectivo">
-            <span class="etiqueta-efectivo">Efectivo en caja</span>
-            <input class="input-efectivo" type="text" name="total-caja" readonly>
-        </div>
-    </header>
+            <div class="caja-efectivo">
+                <span class="etiqueta-efectivo">Efectivo en caja</span>
+                <input class="input-efectivo" type="text" name="total-caja" readonly>
+            </div>
+        </header>
 
-    <main>
+        <main>
             <!--resumen de propinas-->
             <section class="resumen-pago">
                 <label for="propinas-total">Total de propinas</label>
@@ -38,11 +38,13 @@
                     <input class="input-num-person" type="text" placeholder="#" readonly>
                     <p>$0.00 x persona</p>
                 </div>
+            </section>
 
             <!--metodo de pago-->
+            <section class="metodo-pago">
                 <div class="texto-elige-metodo">
                     <img src="img/cartera.png" alt="icono metodo" width="35">
-                    <p id="elige-metodo">Elige el método de pago</p>
+                    <p>Elige el método de pago</p>
                 </div>
                 <div class="div_metodos">
                     <div class="pago">
@@ -63,7 +65,7 @@
             </section>
 
             <!--calculator-->
-            <section>
+            <section class="propinas-calcu">
                 <div id="calculator">
                     <div class="calculadora">
 
@@ -95,17 +97,17 @@
                     </div>
                 </div>
             </section>
-    </main>
+        </main>
 
-    <!--Detalles de pagos hechos-->
-    <aside>
+        <!--Detalles de pagos hechos-->
+        <aside>
 
-    </aside>
+        </aside>
 
-    <footer>
+        <footer>
 
-    </footer>
-
+        </footer>
+    </div>
 </body>
 
 </html>
