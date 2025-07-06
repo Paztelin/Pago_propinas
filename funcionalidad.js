@@ -163,8 +163,8 @@ setTimeout(() => {
     // Selección de elementos del HTML
     const display = document.querySelector("[data-operand-1]");
     const btonesCalcu = document.querySelectorAll("[data-number]");
-    const btnBorrar = document.querySelector("[data-delete]");
-    const btnOk = document.querySelector("[data-ok]");
+    const btnBorrar = document.querySelector(".btn-delete");
+    const btnOk = document.querySelector(".data-ok");
     const btnEditar = document.querySelector(".edit");
 
     const calculator = new Calculator(display);
