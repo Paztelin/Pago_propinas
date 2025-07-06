@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema pago de propinas</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -68,7 +70,6 @@
             <section class="propinas-calcu">
                 <div id="calculator">
                     <div class="calculadora">
-
                         <div class="display-row">
                             <button data-operand-1 type="text" id="display" readonly></button>
                             <img data-delete src="img/borrar.png" alt="borrar" class="btn-borrar">
@@ -97,15 +98,31 @@
                     </div>
                 </div>
             </section>
+
+            <!--Detalles de pagos hechos-->
+            <section class="menu-derecho">
+                <h3>Pagos</h3>
+
+                <div class="metodo1">
+                    <p class="texto">Sin pagos</p>
+                </div>
+            </section>
         </main>
 
-        <!--Detalles de pagos hechos-->
-        <aside>
+        <footer class="footer-container">
+            <div class="widget-foot">
+                <div class="totales-grid">
+                    <p class="texto-pagado">Total pagado</p>
+                    <p class="total-pagado">$0.00</p>
 
-        </aside>
+                    <p class="texto-resto">Restante por pagar</p>
+                    <p class="total-restante">$0.00</p>
 
-        <footer>
-
+                    <div class="div-boton">
+                        <p id="botonn">Pagar propinas</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 </body>
