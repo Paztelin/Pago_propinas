@@ -1,60 +1,117 @@
-setTimeout(() => {
-    alert(
-        "Bienvenido al sistema de propinas.\n\n" +
-        "1. Usa los botones numéricos para ingresar lo que se indique (Efectivo en caja, total de propinas, etc).\n" +
-        "2. Presiona la palomita para confirmar el monto de ambos.\n" +
-        "3. Luego se te preguntará si deseas dividir las propinas.\n" +
-        "4. Si decides dividirlo, ingresa el número de personas.\n" +
-        "5. Verás cuánto le toca a cada uno.\n" +
-        "6. Si no deseas dividirlas, continúa normalmente.\n" +
-        "7. Puedes editar el monto de propinas si lo necesitas.\n" +
-        "8. Al editar, el cálculo por persona se actualizará.\n" +
-        "9. Finalmente, elige el método de pago.\n" +
-        "10. ¡Gracias por usar el sistema!"
-    );
-    alert("Ingresa el efectivo en caja");
+// ************* FUNCIONES DE VENTANA MODAL ************
+function showAlert(message, options = {}) {
+    return new Promise((resolve) => {
+        const modal = document.getElementById("modal-alert");
+        const text = document.getElementById("modal-alert-text");
+        const btnOk = document.getElementById("modal-alert-ok");
 
+        text.innerHTML = message; //insertar-->mostrar texto
+
+        //alineacion textos
+        text.style.textAlign = options.align || "center";
+
+        modal.style.display = "flex"; //mostrar ventana modam
+
+        btnOk.onclick = () => {
+            modal.style.display = "none"; //oculta la ventana
+            resolve();
+        };
+    });
+}
+
+function showConfirm(message) {
+    return new Promise((resolve) => {
+        const modal = document.getElementById("modal-confirm");
+        const text = document.getElementById("modal-confirm-text");
+        const btnYes = document.getElementById("modal-confirm-yes");
+        const btnNo = document.getElementById("modal-confirm-no");
+
+        text.textContent = message;
+        modal.style.display = "flex";
+
+        btnYes.onclick = () => {
+            modal.style.display = "none";
+            resolve(true);
+        };
+
+        btnNo.onclick = () => {
+            modal.style.display = "none";
+            resolve(false);
+        };
+    });
+}
+
+setTimeout(async () => {
+
+    //alineacion izquierda
+    await showAlert(`
+        Bienvenido al sistema de propinas.<br><br>
+        1. Usa los botones para ingresar lo indicado.<br>
+        2. Presiona la palomita para confirmar.<br>
+        3. Dividir las propinas es opcional.<br>
+        4. Si aceptas, ingresa el número de personas.<br>
+        5. Se visualizará el monto de la división.<br>
+        6. Sino divides, continúa normalmente.<br>
+        7. Puedes editar el monto de propinas.<br>
+        8. Al editar, el monto x persona se actualiza.<br>
+        9. Finalmente, elige el método de pago.<br>
+        10. ¡Gracias por usar el sistema!`,
+        { align: "left" }
+    );
+
+    await showAlert("Ingresa el efectivo en caja");
+
+    //calculadora general
     class Calculator {
         constructor(displayElement) {
             this.displayElement = displayElement;
             this.clear();
-            this.dividingMode = false; //num persona dividir prop
-            this.totalPropina = 0;
-            this.ingresandoEfectivo = true; //efectivo en caja
+            this.dividingMode = false; //para num de personas -dividir propinas
+            this.totalPropina = 0; //para total propinas
+            this.ingresandoEfectivo = true; //para ingresar efectivo caja
+            this.fixedMessage = '';
         }
 
-        clear() { //actualizar display calculator
+        clear() { //actualiza - limpia el display calcu
             this.currentValue = '';
             this.updateUI();
         }
 
         formatNumber(value) { //formato de 2 digitos, comas
-            const number = parseFloat(value.replace(/,/g, '')); //convierte un string a float
+            const number = parseFloat(value.replace(/,/g, '')); //elimina , del string      parseFloat->convierte en decimal
             if (isNaN(number)) return '';
-
             return number.toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             });
         }
 
-        updateUI() { //limpia display
+        updateUI() { //limpia display calcu
+            if (this.fixedMessage !== '') {
+                this.displayElement.textContent = this.fixedMessage;
+                return;
+            }
+
             if (this.currentValue === '') {
                 this.displayElement.textContent = '';
                 return;
             }
-            if (this.dividingMode) { //quita formato decimal para num de personas
+            if (this.dividingMode) { //quita formato decimal cuando se ingresa num-personas para dividir propinas
                 this.displayElement.textContent = this.currentValue;
-            } else { //muestra formato decimal
+            } else {
                 const formatted = this.formatNumber(this.currentValue);
                 this.displayElement.textContent = `$${formatted}`;
             }
         }
 
         appendNumber(number) {
-            if (number === '.' && this.currentValue.includes('.')) return;
+            if (this.fixedMessage !== '') {
+                this.fixedMessage = '';
+                this.displayElement.textContent = '';
+            }
 
-            // Para modo dividir prop solo números enteros
+            if (number === '.' && this.currentValue.includes('.')) return;
+            //para modo dividir prop solo numeros enteros
             if (this.dividingMode && number === '.') return;
             this.currentValue += number;
             this.updateUI();
@@ -65,19 +122,19 @@ setTimeout(() => {
             this.updateUI();
         }
 
-        confirm() {
+        async confirm() {
             const inputCaja = document.querySelector(".input-efectivo"); //efectivo en caja
             const inputPropina = document.querySelector(".input-propina"); //total propinas
-            const divInput = document.querySelector(".input-num-person"); //caja numero para dividir
+            const divInput = document.querySelector(".input-num-person"); //caja num para dividir
             const divText = document.querySelector(".dividir-prop p"); //monto por persona
 
             if (this.currentValue === '') return;
 
-            // Paso 1: modo ingresando efectivo
+            //paso1 - ingresar efectivo
             if (this.ingresandoEfectivo) {
                 const monto = parseFloat(this.currentValue.replace(/,/g, ''));
                 if (isNaN(monto) || monto < 0) { //valida monto
-                    alert("Monto inválido");
+                    await showAlert("Monto inválido");
                     this.clear();
                     return;
                 }
@@ -88,46 +145,47 @@ setTimeout(() => {
                 }
                 this.ingresandoEfectivo = false;
                 this.clear();
-                alert("Efectivo en caja registrado. Ahora ingresa el total de propinas.");
+                await showAlert("Efectivo en caja registrado.<br>Ahora ingresa el total de propinas.");
                 return;
             }
 
-            // Paso 2: ingresar propinas 
+            //paso2 - ingresar propinas
             if (!this.dividingMode) {
-                const formatted = this.formatNumber(this.currentValue);//convierte un string a float
-                const numericValue = parseFloat(this.currentValue.replace(/,/g, '')); 
+                const formatted = this.formatNumber(this.currentValue); //convierte un string a float
+                const numericValue = parseFloat(this.currentValue.replace(/,/g, ''));
 
                 inputPropina.value = `$${formatted}`;
                 this.totalPropina = numericValue;
 
-                //Actualiza el campo "restante por pagar" del footer
+                //actualiza el campo "restante por pagar" del footer
                 const restanteElemento = document.querySelector(".total-restante");
                 if (restanteElemento) {
                     restanteElemento.textContent = `$${formatted}`;
                 }
                 this.clear();
 
-                //division de propinas
-                const numPersonas = parseInt(divInput.value);     // División automática si ya hay número en el input
+                //paso3 - dividir propinas (opcional)
+                const numPersonas = parseInt(divInput.value); // División automática si ya hay número en el input
                 if (!isNaN(numPersonas) && numPersonas > 0) {
                     const propinaPorPersona = this.totalPropina / numPersonas;
                     divText.textContent = `$${propinaPorPersona.toFixed(2)} x persona`;
-                } else { //sino pregunta si se desea dividir las propinas
-                    setTimeout(() => {
-                        const deseaDividir = confirm("¿Deseas dividir las propinas?");
-                        if (deseaDividir) {
-                            alert("Ok, escribe entre cuántos se dividirán las propinas");
-                            this.dividingMode = true;
-                        } else {
-                            alert("Ok, continúa eligiendo el método de pago.");
-                        }
-                    }, 1000);
+                    this.displayElement.textContent = `$${propinaPorPersona.toFixed(2)} x persona`;
+                }
+
+                else { //sino pregunta si se desea dividir las propinas
+                    const deseaDividir = await showConfirm("¿Deseas dividir las propinas?");
+                    if (deseaDividir) {
+                        await showAlert("Ok, escribe entre cuántos se dividirán las propinas");
+                        this.dividingMode = true;
+                    } else {
+                        await showAlert("Ok, continúa eligiendo el método de pago.");
+                    }
                 }
 
             } else { //calculo de division de propinas
                 const numPersonas = parseInt(this.currentValue);
                 if (isNaN(numPersonas) || numPersonas <= 0) {
-                    alert("Ingresa un número válido de personas");
+                    await showAlert("Ingresa un número válido de personas");
                     this.clear();
                     return;
                 }
@@ -135,14 +193,16 @@ setTimeout(() => {
                 const propinaPorPersona = this.totalPropina / numPersonas;
                 divText.textContent = `$${propinaPorPersona.toFixed(2)} x persona`;
 
-                this.dividingMode = false;
-                this.clear();
+                this.fixedMessage = `$${propinaPorPersona.toFixed(2)}`; //muestra monto propinas en display-calcu
+                this.updateUI();
+                //this.dividingMode = false;
+                //this.clear();
             }
         }
 
-        editInput() { //icono editar total de propinas
+        async editInput() { //icono edital total propinas
             const inputPropina = document.querySelector(".input-propina"); //total propinas
-            const divInput = document.querySelector(".input-num-person"); //caja numero para dividir
+            const divInput = document.querySelector(".input-num-person"); //caja num-persona para dividir
 
             //limpia valores
             if (inputPropina) inputPropina.value = '';
@@ -155,12 +215,12 @@ setTimeout(() => {
             if (isNaN(numPersonas) || numPersonas <= 0) {
                 divText.textContent = '$0.00 x persona';
             }
-            alert("Se actualizará el monto de propinas x persona.");
-            alert("Escribe el nuevo total de las propinas");
+            await showAlert("Se actualizará el monto de propinas x persona.");
+            await showAlert("Escribe el nuevo total de las propinas");
         }
     }
 
-    // Selección de elementos del HTML
+    //elementos del html
     const display = document.querySelector("[data-operand-1]");
     const btonesCalcu = document.querySelectorAll("[data-number]");
     const btnBorrar = document.querySelector(".btn-delete");

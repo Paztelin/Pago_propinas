@@ -10,6 +10,27 @@
 </head>
 
 <body>
+    <!-- v e n t a n a s     M o d a l e s-->
+    <!-- Mensajes de alerta -->
+    <div id="modal-alert" class="modal">
+        <div class="modal-content">
+            <p id="modal-alert-text"></p>
+            <button id="modal-alert-ok">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Mensaje de confirmación (cuando se pregunta si se dividen las propinas) -->
+    <div id="modal-confirm" class="modal">
+        <div class="modal-content">
+            <p id="modal-confirm-text"></p>
+            <div class="modal-buttons">
+                <button id="modal-confirm-yes">Sí</button>
+                <button id="modal-confirm-no">No</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container-grid">
         <header>
             <div class="atrass">
@@ -47,10 +68,10 @@
                 </div>
 
                 <h3>¿Entre cuántos quieres dividir las propinas?</h3>
-                    <div class="dividir-prop">
-                        <input class="input-num-person" type="text" placeholder="#" readonly>
-                        <p>$0.00 x persona</p>
-                    </div>
+                <div class="dividir-prop">
+                    <input class="input-num-person" type="text" placeholder="#" readonly>
+                    <p>$0.00 x persona</p>
+                </div>
             </section>
 
             <!--metodo de pago-->
@@ -75,12 +96,12 @@
                             <rect x="10" y="14" width="32" height="20" rx="2" fill="none" stroke="#333"
                                 stroke-width="3.5" />
                             <!-- círculo central -->
-                            <circle cx="26" cy="24" r="4" fill="#333" stroke="none"/>
+                            <circle cx="26" cy="24" r="4" fill="#333" stroke="none" />
                             <!-- círculos en las esquinas internas -->
-                            <circle cx="13" cy="17" r="3.5" fill="#333"/> <!-- sup izq -->
-                            <circle cx="39" cy="17" r="3.5" fill="#333"/> <!-- sup der -->
-                            <circle cx="13" cy="31" r="3.5" fill="#333"/> <!-- inf izq -->
-                            <circle cx="39" cy="31" r="3.5" fill="#333"/> <!-- inf der -->
+                            <circle cx="13" cy="17" r="3.5" fill="#333" /> <!-- sup izq -->
+                            <circle cx="39" cy="17" r="3.5" fill="#333" /> <!-- sup der -->
+                            <circle cx="13" cy="31" r="3.5" fill="#333" /> <!-- inf izq -->
+                            <circle cx="39" cy="31" r="3.5" fill="#333" /> <!-- inf der -->
                         </svg>
                         <p class="metodos">Efectivo</p>
                     </div>
@@ -107,7 +128,7 @@
 
             <!--calculator-->
             <section class="propinas-calcu">
-                <div id="calculator">
+                <div id="calculator" class="calculator-container">
                     <div class="calculadora">
                         <div class="display-row">
                             <button data-operand-1 type="text" id="display" readonly></button>
@@ -150,6 +171,9 @@
                             </div>
                         </div>
                     </div>
+                    <!---
+                    <div class="footer-propinas">
+                    </div>-->
                 </div>
             </section>
 
